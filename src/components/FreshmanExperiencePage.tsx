@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
 import { Users, Star, Heart, Sparkles, MessageCircle, Award } from 'lucide-react';
 import Navigation from './Navigation';
-import FloatingShapes from './FloatingShapes';
+
 import Logos from './Logos';
 import groupPhoto from '../assets/group.png';
 
@@ -16,42 +16,51 @@ export default function FreshmanExperiencePage() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ maxWidth: '1668px', margin: '0 auto', backgroundColor: '#FFF8EC' }}>
-      <FloatingShapes />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+      className="min-h-screen relative overflow-hidden text-foreground" style={{ maxWidth: '1668px', margin: '0 auto' }}
+    >
+
       <div className="relative z-20">
         <Logos />
         <Navigation />
       </div>
 
-      <div className="relative z-10 px-12 py-8">
+      <div className="relative z-10 px-4 md:px-8 lg:px-12 py-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
           className="text-center mb-8"
         >
-          <h1 className="text-5xl mb-3" style={{ color: '#546B41' }}>
-            My College Experience
+          <h1 className="text-3xl md:text-5xl mb-3 font-bold text-primary">
+            Freshman Experience
           </h1>
-          <p className="text-lg" style={{ color: '#546B41' }}>
-            A journey of growth, friendship, and discovery
+          <p className="text-lg text-primary">
+            My first steps into the world of IT at UNO-R.
           </p>
         </motion.div>
 
         {/* Hero Section with Group Photo */}
         <motion.div
           initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="bg-white rounded-3xl shadow-2xl overflow-hidden mb-8"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ type: 'spring', stiffness: 100, damping: 20 }}
+          className="bg-card rounded-3xl shadow-2xl overflow-hidden mb-8"
         >
           {/* Group Photo Section */}
           <div className="relative h-96">
             <motion.div
               initial={{ opacity: 0, scale: 1.1 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1, delay: 0.4 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 1 }}
               className="h-full"
             >
               <img
@@ -66,7 +75,7 @@ export default function FreshmanExperiencePage() {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.8 }}
-                  className="text-white text-3xl drop-shadow-lg"
+                  className="text-white text-2xl md:text-3xl drop-shadow-lg font-bold"
                  
                 >
                   Precious Memories with Friends
@@ -78,11 +87,12 @@ export default function FreshmanExperiencePage() {
           {/* Text Section */}
           <motion.div
             initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="p-10"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+            className="p-6 md:p-10 bg-secondary"
           >
-            <div className="space-y-5 leading-relaxed max-w-5xl mx-auto" style={{ color: '#546B41' }}>
+            <div className="space-y-5 leading-relaxed max-w-5xl mx-auto text-primary">
               <p>
                 My time in college has been a mix of excitement, nervousness, and new beginnings.
               </p>
@@ -109,26 +119,25 @@ export default function FreshmanExperiencePage() {
         </motion.div>
 
         {/* Highlights Grid */}
-        <div className="grid grid-cols-3 md:grid-cols-6 gap-4 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3 sm:gap-4 mb-8">
           {highlights.map((item, index) => {
             const Icon = item.icon;
             return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ duration: 0.5, delay: 0.8 + index * 0.1 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ type: 'spring', stiffness: 150, damping: 15, delay: index * 0.1 }}
               >
                 <motion.div
-                  whileHover={{ scale: 1.1, rotate: 5 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="rounded-2xl p-5 shadow-lg hover:shadow-xl transition-all duration-300 text-center cursor-pointer"
-                  style={{ backgroundColor: '#DCCCAC' }}
+                  whileHover={{ scale: 1.1, rotate: 2 }}
+                  className="rounded-2xl p-4 md:p-6 shadow-lg text-center h-full flex flex-col justify-center items-center cursor-pointer bg-card transition-shadow hover:shadow-xl"
                 >
-                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-2 shadow-md" style={{ backgroundColor: '#546B41' }}>
-                    <Icon className="w-7 h-7" style={{ color: '#FFF8EC' }} />
+                  <div className="w-14 h-14 rounded-2xl flex items-center justify-center mx-auto mb-3 shadow-md bg-primary">
+                    <Icon className="w-7 h-7 text-primary-foreground" />
                   </div>
-                  <p className="text-xs font-medium" style={{ color: '#546B41' }}>{item.label}</p>
+                  <p className="text-xs font-medium text-primary">{item.label}</p>
                 </motion.div>
               </motion.div>
             );
@@ -138,16 +147,16 @@ export default function FreshmanExperiencePage() {
         {/* Closing Quote */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.4 }}
-          className="rounded-3xl p-8 shadow-xl text-center"
-          style={{ backgroundColor: '#99AD7A' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+          className="rounded-3xl p-8 shadow-xl text-center bg-muted"
         >
-          <p className="text-xl italic" style={{ color: '#FFF8EC' }}>
-            "This is just the beginning of my journey, and I'm excited for what comes next!"
+          <p className="text-xl italic text-primary-foreground font-medium">
+            "Every expert was once a beginner."
           </p>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

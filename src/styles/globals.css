@@ -24,6 +24,26 @@
   --radius: 0.625rem;
 }
 
+.dark {
+  --background: #11140e;
+  --foreground: #e6e8e3;
+  --card: #1a1e16;
+  --card-foreground: #e6e8e3;
+  --popover: #1a1e16;
+  --popover-foreground: #e6e8e3;
+  --primary: #99AD7A;
+  --primary-foreground: #11140e;
+  --secondary: #2c3325;
+  --secondary-foreground: #e6e8e3;
+  --muted: #3a4531;
+  --muted-foreground: #DCCCAC;
+  --accent: #2c3325;
+  --accent-foreground: #e6e8e3;
+  --destructive: #d4183d;
+  --destructive-foreground: #ffffff;
+  --border: rgba(153, 173, 122, 0.2);
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -56,6 +76,7 @@
   html {
     font-size: var(--font-size);
     height: 100%;
+    overflow-y: scroll;
   }
 
   body {

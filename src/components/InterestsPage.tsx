@@ -1,7 +1,7 @@
 import { motion } from 'motion/react';
-import { Music, Dumbbell, BookOpen, Film, Gamepad2, Palette, Cpu, Users } from 'lucide-react';
+import { Music, Goal, BookOpen, Film, Gamepad2, Palette, Cpu, Users } from 'lucide-react';
 import Navigation from './Navigation';
-import FloatingShapes from './FloatingShapes';
+
 import Logos from './Logos';
 import portraitImage from '../assets/profile.png';
 
@@ -13,9 +13,9 @@ export default function InterestsPage() {
       icon: Music,
     },
     {
-      title: 'Sports – Badminton',
-      description: 'Badminton is my favorite sport. I enjoy the quick movements, the energy, and how it keeps me active. It\'s also one way I bond with friends.',
-      icon: Dumbbell,
+      title: 'Football',
+      description: 'Football is my favorite sport. I love the energy, teamwork, and strategy involved on the pitch. It keeps me active and helps me bond with friends.',
+      icon: Goal,
     },
     {
       title: 'Reading Manga',
@@ -50,26 +50,33 @@ export default function InterestsPage() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ maxWidth: '1668px', margin: '0 auto', backgroundColor: '#FFF8EC' }}>
-      <FloatingShapes />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+      className="min-h-screen relative overflow-hidden text-foreground" style={{ maxWidth: '1668px', margin: '0 auto' }}
+    >
+
       <div className="relative z-20">
         <Logos />
         <Navigation />
       </div>
 
-      <div className="relative z-10 px-12 py-8">
+      <div className="relative z-10 px-4 md:px-8 lg:px-12 py-8">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
           className="text-center mb-6"
         >
-          <h1 className="text-5xl mb-3" style={{ color: '#546B41' }}>
+          <h1 className="text-3xl md:text-5xl mb-3 font-bold text-primary">
             Things I Love
           </h1>
-          <p className="text-lg max-w-3xl mx-auto" style={{ color: '#546B41' }}>
-            Here are some of my favorite hobbies and interests that make me who I am.
+          <p className="text-lg max-w-3xl mx-auto text-primary">
+            A glimpse into the hobbies and interests that keep me energized and inspired.
           </p>
         </motion.div>
 
@@ -78,7 +85,7 @@ export default function InterestsPage() {
           initial={{ opacity: 0, scale: 0 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-end mb-6 mr-12"
+          className="flex justify-center md:justify-end mb-6 md:mr-12"
         >
           <motion.div
             animate={{
@@ -100,33 +107,29 @@ export default function InterestsPage() {
         </motion.div>
 
         {/* Interests Grid */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 mb-8">
           {interests.map((interest, index) => {
             const Icon = interest.icon;
             return (
               <motion.div
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 + index * 0.08 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: index * 0.08 }}
               >
                 <motion.div
                   whileHover={{ scale: 1.05, y: -8 }}
-                  whileTap={{ scale: 0.98 }}
-                  className={`rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer h-full`}
-                  style={{ backgroundColor: '#DCCCAC' }}
+                  className="rounded-3xl p-6 shadow-xl h-full flex flex-col justify-between cursor-pointer transition-all duration-300 bg-secondary"
                 >
-                  <div className="flex flex-col items-center text-center">
-                    <motion.div
-                      whileHover={{ rotate: [0, -10, 10, -10, 0] }}
-                      transition={{ duration: 0.5 }}
-                      className={`w-16 h-16 rounded-2xl flex items-center justify-center shadow-md mb-4`}
-                      style={{ backgroundColor: '#546B41' }}
-                    >
-                      <Icon className="w-8 h-8" style={{ color: '#FFF8EC' }} />
-                    </motion.div>
-                    <h3 className="mb-2 font-medium" style={{ color: '#546B41' }}>{interest.title}</h3>
-                    <p className="text-xs leading-relaxed" style={{ color: '#546B41' }}>{interest.description}</p>
+                  <div>
+                    <div className="flex justify-between items-start mb-4">
+                      <div className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-md bg-primary">
+                        <Icon className="w-8 h-8 text-primary-foreground" />
+                      </div>
+                    </div>
+                    <h3 className="mb-2 font-bold text-primary">{interest.title}</h3>
+                    <p className="text-xs leading-relaxed text-primary">{interest.description}</p>
                   </div>
                 </motion.div>
               </motion.div>
@@ -137,16 +140,16 @@ export default function InterestsPage() {
         {/* Quote Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 1.2 }}
-          className="rounded-3xl p-8 shadow-xl text-center max-w-4xl mx-auto"
-          style={{ backgroundColor: '#DCCCAC' }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
+          className="rounded-3xl p-6 md:p-8 shadow-xl text-center max-w-4xl mx-auto bg-secondary"
         >
-          <p className="text-lg italic" style={{ color: '#546B41' }}>
-            "These interests help me relax, have fun, and connect with others who share the same passions."
+          <p className="text-lg italic text-primary">
+            "Your passions are a window into your soul."
           </p>
         </motion.div>
       </div>
-    </div>
+    </motion.div>
   );
 }

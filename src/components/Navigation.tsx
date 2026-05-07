@@ -1,4 +1,4 @@
-import { Home, User, Heart, Sparkles, Target } from 'lucide-react';
+import { Home, User, Heart, Sparkles, Target, Briefcase } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navigation() {
@@ -9,11 +9,12 @@ export default function Navigation() {
     { icon: User, path: '/about', label: 'About Me' },
     { icon: Sparkles, path: '/interests', label: 'Interests' },
     { icon: Heart, path: '/freshman', label: 'Experience' },
+    { icon: Briefcase, path: '/projects', label: 'Projects' },
     { icon: Target, path: '/goals', label: 'Goals' },
   ];
 
   return (
-    <nav className="flex items-center justify-center gap-8 py-4">
+    <nav className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 md:gap-8 py-4 px-2">
       {navItems.map((item, index) => {
         const Icon = item.icon;
         const isActive = location.pathname === item.path;
@@ -25,13 +26,13 @@ export default function Navigation() {
           >
             <div
               className={`p-2.5 rounded-full transition-all duration-300 ${isActive
-                  ? 'shadow-lg bg-[#546B41]'
-                  : 'bg-[#DCCCAC] group-hover:bg-[#99AD7A]'
+                  ? 'shadow-lg bg-primary'
+                  : 'bg-secondary group-hover:bg-muted'
                 }`}
             >
-              <Icon className={`w-4 h-4 ${isActive ? 'text-[#FFF8EC]' : 'text-[#546B41] group-hover:text-[#FFF8EC]'}`} />
+              <Icon className={`w-4 h-4 ${isActive ? 'text-primary-foreground' : 'text-primary group-hover:text-primary-foreground'}`} />
             </div>
-            <span className={`text-xs transition-all duration-300 font-medium ${isActive ? 'text-[#546B41]' : 'text-[#99AD7A] group-hover:text-[#546B41]'
+            <span className={`text-xs transition-all duration-300 font-medium ${isActive ? 'text-primary' : 'text-muted group-hover:text-primary'
               }`}>
               {item.label}
             </span>

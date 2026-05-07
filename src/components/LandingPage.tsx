@@ -1,8 +1,7 @@
 import { motion } from 'motion/react';
-import { User, Heart, BookOpen, Target } from 'lucide-react';
+import { User, Heart, BookOpen, Target, Briefcase, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
-import FloatingShapes from './FloatingShapes';
 import Logos from './Logos';
 import portraitImage from '../assets/profile.png';
 
@@ -20,11 +19,12 @@ export default function LandingPage() {
       icon: Heart,
       path: '/interests',
     },
+
     {
-      title: 'University Experience',
-      description: 'A glimpse of my life as a BSIT freshman at UNO-R.',
-      icon: BookOpen,
-      path: '/freshman',
+      title: 'Projects',
+      description: 'Check out my hands-on technical projects.',
+      icon: Briefcase,
+      path: '/projects',
     },
     {
       title: 'Future Goals',
@@ -35,8 +35,13 @@ export default function LandingPage() {
   ];
 
   return (
-    <div className="min-h-screen relative overflow-hidden" style={{ maxWidth: '1668px', margin: '0 auto', backgroundColor: '#FFF8EC' }}>
-      <FloatingShapes />
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0, y: -20 }}
+      transition={{ type: 'spring', stiffness: 200, damping: 20 }}
+      className="min-h-screen relative overflow-hidden text-foreground" style={{ maxWidth: '1668px', margin: '0 auto' }}
+    >
 
       {/* Header with Logos */}
       <div className="relative z-20">
@@ -44,18 +49,19 @@ export default function LandingPage() {
         <Navigation />
       </div>
 
-      <div className="relative z-10 px-12 pb-12">
+      <div className="relative z-10 px-4 md:px-8 lg:px-12 pb-12">
         {/* Header Section */}
         <motion.div
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15 }}
           className="text-center mb-8"
         >
-          <h1 className="text-5xl mb-3" style={{ color: '#546B41' }}>
+          <h1 className="text-3xl md:text-5xl mb-3 font-bold text-primary">
             Welcome!
           </h1>
-          <p className="text-lg" style={{ color: '#546B41' }}>
+          <p className="text-base md:text-lg text-primary">
             Take a quick look at who I am and what I'm passionate about.
           </p>
         </motion.div>
@@ -63,9 +69,10 @@ export default function LandingPage() {
         {/* Character Image */}
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="flex justify-center mb-12"
+          className="flex flex-col items-center justify-center mb-12 gap-8"
         >
           <motion.div
             animate={{
@@ -84,35 +91,44 @@ export default function LandingPage() {
               className="w-full h-full object-cover"
             />
           </motion.div>
+          <a
+            href="/Ranjit.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full font-bold bg-primary text-primary-foreground hover:scale-105 transition-transform shadow-lg"
+          >
+            <FileText className="w-5 h-5" />
+            Download Resume
+          </a>
         </motion.div>
 
         {/* Cards Grid */}
-        <div className="grid grid-cols-2 gap-8 max-w-5xl mx-auto mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-8 max-w-5xl mx-auto mb-8">
           {cards.map((card, index) => {
             const Icon = card.icon;
             return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 + index * 0.1 }}
-              >
+                <motion.div
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ type: 'spring', stiffness: 100, damping: 15, delay: index * 0.1 }}
+                  key={index}
+                >
                 <Link to={card.path}>
                   <motion.div
                     whileHover={{ scale: 1.03, y: -5 }}
                     whileTap={{ scale: 0.98 }}
-                    className="rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer h-full"
-                    style={{ backgroundColor: '#DCCCAC' }}
+                    className="rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer h-full bg-secondary"
                   >
                     <div className="flex flex-col items-center text-center gap-4">
-                      <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-md" style={{ backgroundColor: '#FFF8EC' }}>
-                        <Icon className="w-8 h-8" style={{ color: '#546B41' }} />
+                      <div className="w-16 h-16 rounded-full flex items-center justify-center shadow-md bg-background">
+                        <Icon className="w-8 h-8 text-primary" />
                       </div>
                       <div>
-                        <h3 className="mb-2" style={{ color: '#546B41' }}>
+                        <h3 className="mb-2 text-primary font-bold">
                           {card.title}
                         </h3>
-                        <p className="text-sm leading-relaxed" style={{ color: '#546B41' }}>
+                        <p className="text-sm leading-relaxed text-primary">
                           {card.description}
                         </p>
                       </div>
@@ -124,19 +140,8 @@ export default function LandingPage() {
           })}
         </div>
 
-        {/* Footer */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="rounded-2xl py-4 text-center mt-8"
-          style={{ backgroundColor: '#99AD7A' }}
-        >
-          <p className="text-sm font-medium" style={{ color: '#FFF8EC' }}>
-            Ranjit Yadav: spreading Love❤️
-          </p>
-        </motion.div>
+
       </div>
-    </div>
+    </motion.div>
   );
 }
