@@ -8,7 +8,6 @@ export default function Navigation() {
     { icon: Home, path: '/', label: 'Home' },
     { icon: User, path: '/about', label: 'About Me' },
     { icon: Sparkles, path: '/interests', label: 'Interests' },
-    { icon: Heart, path: '/freshman', label: 'Experience' },
     { icon: Briefcase, path: '/projects', label: 'Projects' },
     { icon: Target, path: '/goals', label: 'Goals' },
   ];
