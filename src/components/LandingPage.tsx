@@ -1,5 +1,5 @@
 import { motion } from 'motion/react';
-import { User, Heart, Target, Briefcase, FileText } from 'lucide-react';
+import { User, Heart, BookOpen, Target, Briefcase, FileText } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import Navigation from './Navigation';
 import Logos from './Logos';
