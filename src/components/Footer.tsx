@@ -15,21 +15,25 @@ export default function Footer() {
 
         <div className="flex gap-4">
           <a
-            href="#"
+            href="https://github.com/ranjit-15"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-2 rounded-full bg-background text-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-sm hover:shadow-md"
             aria-label="GitHub Profile"
           >
             <Github className="w-5 h-5" />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/ranjit-yadav-2ab635200"
+            target="_blank"
+            rel="noopener noreferrer"
             className="p-2 rounded-full bg-background text-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-sm hover:shadow-md"
             aria-label="LinkedIn Profile"
           >
             <Linkedin className="w-5 h-5" />
           </a>
           <a
-            href="#"
+            href="mailto:ranjityadav982577rd@gmail.com"
             className="p-2 rounded-full bg-background text-primary hover:bg-primary hover:text-primary-foreground transition-all shadow-sm hover:shadow-md"
             aria-label="Email Me"
           >
