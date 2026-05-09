@@ -1,33 +1,33 @@
 import { motion } from 'motion/react';
-import { ExternalLink, Github, Code, Server, Database, Globe } from 'lucide-react';
+import { ExternalLink, Github, Code, Server, Globe, Award } from 'lucide-react';
 import Navigation from './Navigation';
 import Logos from './Logos';
 
 export default function ProjectsPage() {
   const projects = [
     {
-      title: 'Cloud Infrastructure Pipeline',
-      description: 'Automated CI/CD pipeline using GitHub Actions, Docker, and AWS EC2 to deploy scalable web applications.',
+      title: 'MultiETools',
+      description: 'A versatile web platform offering a collection of everyday utilities — from text tools and image converters to calculators — all in one place.',
+      icon: Globe,
+      tech: ['HTML', 'CSS', 'JavaScript'],
+      githubLink: 'https://github.com/ranjit-15/multietools',
+      liveLink: 'https://hive.page.gd/login',
+    },
+    {
+      title: 'NexusAI',
+      description: 'An AI-powered web application built with React and Firebase, providing intelligent conversational capabilities with real-time data syncing.',
       icon: Server,
-      tech: ['AWS', 'Docker', 'GitHub Actions', 'Linux'],
-      githubLink: '#',
+      tech: ['React', 'Firebase', 'Vite', 'TypeScript'],
+      githubLink: 'https://github.com/ranjit-15/NexusAI',
       liveLink: '#',
     },
     {
       title: 'Portfolio Website',
-      description: 'A modern, responsive portfolio built with React, Tailwind CSS, and Framer Motion, featuring dark mode and fluid animations.',
-      icon: Globe,
+      description: 'This very site! A modern, responsive portfolio built with React, Tailwind CSS v4, and Framer Motion, featuring dark mode and fluid page transitions.',
+      icon: Code,
       tech: ['React', 'Tailwind', 'Framer Motion', 'Vite'],
-      githubLink: '#',
-      liveLink: '#',
-    },
-    {
-      title: 'Database Migration Script',
-      description: 'A robust Python script for migrating large datasets between PostgreSQL databases with zero downtime.',
-      icon: Database,
-      tech: ['Python', 'PostgreSQL', 'SQLAlchemy'],
-      githubLink: '#',
-      liveLink: '#',
+      githubLink: 'https://github.com/ranjit-15/Portfolio',
+      liveLink: 'https://ranjityadav.com.np',
     },
   ];
 
@@ -83,12 +83,16 @@ export default function ProjectsPage() {
                         <Icon className="w-7 h-7 text-primary-foreground" />
                       </div>
                       <div className="flex gap-3">
-                        <a href={project.githubLink} className="p-2 rounded-full bg-secondary text-primary hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="GitHub Repository">
-                          <Github className="w-5 h-5" />
-                        </a>
-                        <a href={project.liveLink} className="p-2 rounded-full bg-secondary text-primary hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Live Project">
-                          <ExternalLink className="w-5 h-5" />
-                        </a>
+                        {project.githubLink !== '#' && (
+                          <a href={project.githubLink} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary text-primary hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="GitHub Repository">
+                            <Github className="w-5 h-5" />
+                          </a>
+                        )}
+                        {project.liveLink !== '#' && (
+                          <a href={project.liveLink} target="_blank" rel="noopener noreferrer" className="p-2 rounded-full bg-secondary text-primary hover:bg-primary hover:text-primary-foreground transition-colors" aria-label="Live Project">
+                            <ExternalLink className="w-5 h-5" />
+                          </a>
+                        )}
                       </div>
                     </div>
                     
@@ -114,6 +118,55 @@ export default function ProjectsPage() {
           })}
         </div>
 
+        {/* Certificates Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ type: 'spring', stiffness: 100, damping: 15, delay: 0.2 }}
+          className="mt-16 max-w-7xl mx-auto"
+        >
+          <h2 className="text-2xl md:text-3xl font-bold text-primary text-center mb-8 flex items-center justify-center gap-3">
+            <Award className="w-8 h-8" />
+            Certificates & Achievements
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            {[
+              {
+                title: 'Certificate 1',
+                issuer: 'Issuing Organization',
+                date: '2024',
+                description: 'Tell me what your first certificate is and I will update this!',
+              },
+              {
+                title: 'Certificate 2',
+                issuer: 'Issuing Organization',
+                date: '2024',
+                description: 'Tell me what your second certificate is and I will update this!',
+              },
+            ].map((cert, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ type: 'spring', stiffness: 100, damping: 15, delay: index * 0.15 }}
+                whileHover={{ y: -4 }}
+                className="rounded-3xl p-6 md:p-8 shadow-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-2xl transition-all duration-300 flex gap-5 items-start"
+              >
+                <div className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center bg-primary shadow-md">
+                  <Award className="w-7 h-7 text-primary-foreground" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-bold text-primary mb-1">{cert.title}</h3>
+                  <p className="text-sm font-medium text-primary/70 mb-2">{cert.issuer} · {cert.date}</p>
+                  <p className="text-sm text-primary/60 leading-relaxed">{cert.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* Footer CTA */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
@@ -128,7 +181,9 @@ export default function ProjectsPage() {
             I'm constantly building and learning new things. Visit my GitHub profile to see my latest commits and open-source contributions.
           </p>
           <a 
-            href="#" 
+            href="https://github.com/ranjit-15" 
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold bg-background text-foreground hover:scale-105 transition-transform"
           >
             <Github className="w-5 h-5" />
