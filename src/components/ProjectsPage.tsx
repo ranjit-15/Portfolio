@@ -133,16 +133,20 @@ export default function ProjectsPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {[
               {
-                title: 'Certificate 1',
-                issuer: 'Issuing Organization',
+                title: 'Python Essentials 1',
+                issuer: 'Cisco / OpenEDG Python Institute',
                 date: '2024',
-                description: 'Tell me what your first certificate is and I will update this!',
+                description: 'Verified knowledge of computer programming concepts, Python syntax and semantics, and the ability to accomplish coding tasks using the Python Standard Library.',
+                badgeId: '2f3d8f93-a01d-42cd-aa20-53f5c2081d4f',
+                credlyUrl: 'https://www.credly.com/badges/2f3d8f93-a01d-42cd-aa20-53f5c2081d4f/public_url',
               },
               {
-                title: 'Certificate 2',
-                issuer: 'Issuing Organization',
+                title: 'Python Essentials 2',
+                issuer: 'Cisco / OpenEDG Python Institute',
                 date: '2024',
-                description: 'Tell me what your second certificate is and I will update this!',
+                description: 'Verified intermediate Python skills including modules, packages, exceptions, file processing, OOP, and prepares for the PCAP – Certified Associate in Python Programming.',
+                badgeId: '8311892d-dd35-465d-a15c-d02a815383aa',
+                credlyUrl: 'https://www.credly.com/badges/8311892d-dd35-465d-a15c-d02a815383aa/public_url',
               },
             ].map((cert, index) => (
               <motion.div
@@ -152,20 +156,44 @@ export default function ProjectsPage() {
                 viewport={{ once: true }}
                 transition={{ type: 'spring', stiffness: 100, damping: 15, delay: index * 0.15 }}
                 whileHover={{ y: -4 }}
-                className="rounded-3xl p-6 md:p-8 shadow-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-2xl transition-all duration-300 flex gap-5 items-start"
+                className="rounded-3xl p-6 md:p-8 shadow-xl bg-card border border-border/50 hover:border-primary/30 hover:shadow-2xl transition-all duration-300 flex flex-col sm:flex-row gap-6 items-start"
               >
-                <div className="flex-shrink-0 w-14 h-14 rounded-2xl flex items-center justify-center bg-primary shadow-md">
-                  <Award className="w-7 h-7 text-primary-foreground" />
+                {/* Credly Badge */}
+                <div className="flex-shrink-0 flex items-center justify-center">
+                  <div
+                    data-iframe-width="120"
+                    data-iframe-height="210"
+                    data-share-badge-id={cert.badgeId}
+                    data-share-badge-host="https://www.credly.com"
+                  />
                 </div>
-                <div>
-                  <h3 className="text-lg font-bold text-primary mb-1">{cert.title}</h3>
-                  <p className="text-sm font-medium text-primary/70 mb-2">{cert.issuer} · {cert.date}</p>
-                  <p className="text-sm text-primary/60 leading-relaxed">{cert.description}</p>
+                {/* Info */}
+                <div className="flex-1">
+                  <div className="flex items-start gap-3 mb-3">
+                    <div className="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center bg-primary shadow-md">
+                      <Award className="w-5 h-5 text-primary-foreground" />
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-bold text-primary">{cert.title}</h3>
+                      <p className="text-sm font-medium text-primary/70">{cert.issuer} · {cert.date}</p>
+                    </div>
+                  </div>
+                  <p className="text-sm text-primary/70 leading-relaxed mb-4">{cert.description}</p>
+                  <a
+                    href={cert.credlyUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-primary text-primary-foreground hover:scale-105 transition-transform shadow-sm"
+                  >
+                    <Award className="w-4 h-4" />
+                    Verify on Credly
+                  </a>
                 </div>
               </motion.div>
             ))}
           </div>
         </motion.div>
+
 
         {/* Footer CTA */}
         <motion.div
