@@ -11,7 +11,7 @@ export default function ProjectsPage() {
       icon: Globe,
       tech: ['HTML', 'CSS', 'JavaScript'],
       githubLink: 'https://github.com/ranjit-15/multietools',
-      liveLink: 'https://hive.page.gd/login',
+      liveLink: 'https://multietools.vercel.app/',
     },
     {
       title: 'NexusAI',
@@ -95,7 +95,7 @@ export default function ProjectsPage() {
                         )}
                       </div>
                     </div>
-                    
+
                     <h3 className="text-xl font-bold mb-3 text-primary">{project.title}</h3>
                     <p className="text-primary/80 mb-6 leading-relaxed">
                       {project.description}
@@ -104,7 +104,7 @@ export default function ProjectsPage() {
 
                   <div className="flex flex-wrap gap-2 mt-auto">
                     {project.tech.map((tech, techIndex) => (
-                      <span 
+                      <span
                         key={techIndex}
                         className="px-3 py-1 rounded-full text-xs font-medium bg-secondary text-primary border border-primary/10"
                       >
@@ -208,8 +208,8 @@ export default function ProjectsPage() {
           <p className="text-lg mb-6 text-primary-foreground/90">
             I'm constantly building and learning new things. Visit my GitHub profile to see my latest commits and open-source contributions.
           </p>
-          <a 
-            href="https://github.com/ranjit-15" 
+          <a
+            href="https://github.com/ranjit-15"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold bg-background text-foreground hover:scale-105 transition-transform"
