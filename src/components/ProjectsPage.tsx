@@ -11,7 +11,7 @@ export default function ProjectsPage() {
       icon: Globe,
       tech: ['HTML', 'CSS', 'JavaScript'],
       githubLink: 'https://github.com/ranjit-15/multietools',
-      liveLink: 'https://multietools.vercel.app/',
+      liveLink: 'https://www.multietools.tech/',
     },
     {
       title: 'NexusAI',
