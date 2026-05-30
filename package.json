@@ -1,15 +1,15 @@
 {
-  "name": "Student Portfolio Interface (Community)",
+  "name": "ranjit-yadav-portfolio",
   "version": "0.1.0",
   "private": true,
   "type": "module",
   "dependencies": {
 
     "lucide-react": "^0.487.0",
-    "motion": "*",
+    "motion": "^11.18.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-router-dom": "*"
+    "react-router-dom": "^7.6.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "4.1.12",

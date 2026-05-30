@@ -204,6 +204,7 @@ export default function ProjectsPage() {
           className="mt-12 rounded-3xl p-8 md:p-12 shadow-xl text-center max-w-4xl mx-auto bg-muted"
         >
           <Code className="w-12 h-12 mx-auto mb-4 text-primary-foreground opacity-80" />
+          {/* eslint-disable-next-line */}
           <h2 className="text-2xl font-bold mb-3 text-primary-foreground">Check out more on GitHub</h2>
           <p className="text-lg mb-6 text-primary-foreground/90">
             I'm constantly building and learning new things. Visit my GitHub profile to see my latest commits and open-source contributions.
