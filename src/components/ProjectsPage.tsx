@@ -3,6 +3,12 @@ import { ExternalLink, Github, Code, Server, Globe, Award } from 'lucide-react';
 import Navigation from './Navigation';
 import Logos from './Logos';
 
+const LABELS = {
+  githubCta: 'Check out more on GitHub',
+  githubCtaDesc: "I'm constantly building and learning new things. Visit my GitHub profile to see my latest commits and open-source contributions.",
+  githubBtn: 'View GitHub Profile',
+};
+
 export default function ProjectsPage() {
   const projects = [
     {
@@ -204,10 +210,9 @@ export default function ProjectsPage() {
           className="mt-12 rounded-3xl p-8 md:p-12 shadow-xl text-center max-w-4xl mx-auto bg-muted"
         >
           <Code className="w-12 h-12 mx-auto mb-4 text-primary-foreground opacity-80" />
-          {/* eslint-disable-next-line */}
-          <h2 className="text-2xl font-bold mb-3 text-primary-foreground">Check out more on GitHub</h2>
+          <h2 className="text-2xl font-bold mb-3 text-primary-foreground">{LABELS.githubCta}</h2>
           <p className="text-lg mb-6 text-primary-foreground/90">
-            I'm constantly building and learning new things. Visit my GitHub profile to see my latest commits and open-source contributions.
+            {LABELS.githubCtaDesc}
           </p>
           <a
             href="https://github.com/ranjit-15"
@@ -216,7 +221,7 @@ export default function ProjectsPage() {
             className="inline-flex items-center gap-2 px-8 py-3 rounded-full font-bold bg-background text-foreground hover:scale-105 transition-transform"
           >
             <Github className="w-5 h-5" />
-            View GitHub Profile
+            {LABELS.githubBtn}
           </a>
         </motion.div>
       </div>
