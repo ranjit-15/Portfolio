@@ -19,7 +19,7 @@ export default function ProjectsPage() {
       icon: Server,
       tech: ['React', 'Firebase', 'Vite', 'TypeScript'],
       githubLink: 'https://github.com/ranjit-15/NexusAI',
-      liveLink: 'https://nexusais.dev',
+      liveLink: 'https://www.nexusais.dev/',
     },
     {
       title: 'Portfolio Website',
