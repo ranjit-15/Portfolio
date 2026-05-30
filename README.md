@@ -1,217 +1,103 @@
-# Ranjit Yadav - Portfolio Website
+# Ranjit Yadav — Portfolio Website
 
-A modern, interactive portfolio website built with React, TypeScript, and Vite. This project showcases personal information, interests, university experience, and future goals with a beautiful user interface.
+A modern, responsive personal portfolio built with React, TypeScript, and Vite. Hosted at [ranjityadav.com.np](https://ranjityadav.com.np).
 
 ## 🚀 Features
 
-- **Multi-page Navigation**: Seamless routing between different sections
-- **Interactive UI**: Smooth animations and hover effects using Framer Motion
-- **Responsive Design**: Fully responsive layout that works on all devices (Mobile, Tablet, Desktop)
-- **Vercel Analytics**: Built-in analytics for tracking site performance and visitor data
-- **SEO Optimized**: Meta tags, robots.txt, and sitemap.xml for better search engine visibility
-- **Modern Tech Stack**: Built with latest React ecosystem tools
-- **Logo Interaction**: Click the logo to refresh the page
-- **Optimized Assets**: Reduced logo dimensions for better performance
+- **Multi-page Navigation** — Seamless client-side routing between sections
+- **Smooth Animations** — Page transitions and micro-animations via Motion
+- **Dark / Light Mode** — Theme toggle with persistent preference
+- **Responsive Design** — Works on all screen sizes
+- **SEO Optimized** — Meta tags, Open Graph, sitemap.xml, robots.txt, canonical URL
+- **Certificates** — Credly badge embeds for verified credentials
 
 ## 🛠️ Tech Stack
 
-- **React 18.3.1** - UI library
-- **TypeScript** - Type-safe development
-- **Vite 6.4.2** - Build tool and dev server
-- **Tailwind CSS 4.1.12** - Styling
-- **Framer Motion** - Animation library
-- **React Router DOM** - Client-side routing
-- **Lucide React** - Icon library
-
-## 📋 Prerequisites
-
-- Node.js 18+ 
-- npm or yarn
-
-## 🚀 Getting Started
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone <your-repository-url>
-cd Portfolio
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-The application will open at `http://localhost:3000`
-
-### Build for Production
-
-```bash
-npm run build
-```
-
-The build output will be in the `build` directory.
-
-### Preview Production Build
-
-```bash
-npm run preview
-```
+| Tool | Version |
+|---|---|
+| React | 18.3.1 |
+| TypeScript | 6.0.3 |
+| Vite | 6.4.2 |
+| Tailwind CSS | 4.1.12 |
+| Motion | 12.38.0 |
+| React Router DOM | 7.15.0 |
+| Lucide React | 0.487.0 |
 
 ## 📁 Project Structure
 
 ```
 Portfolio/
+├── public/
+│   ├── og-preview.jpg     # Social media preview image (1200x630, <100KB)
+│   ├── logo.png           # Site logo / favicon
+│   ├── Ranjit.pdf         # Resume download
+│   ├── robots.txt         # Search engine crawl rules
+│   └── sitemap.xml        # All page URLs for Google indexing
 ├── src/
-│   ├── assets/           # Static assets (images, icons)
-│   ├── components/       # React components
-│   │   ├── AboutMePage.tsx
-│   │   ├── FloatingShapes.tsx
-│   │   ├── FreshmanExperiencePage.tsx
-│   │   ├── GoalsPage.tsx
-│   │   ├── InterestsPage.tsx
+│   ├── assets/            # Images used inside the app
+│   ├── components/        # All page & UI components
 │   │   ├── LandingPage.tsx
+│   │   ├── AboutMePage.tsx
+│   │   ├── InterestsPage.tsx
+│   │   ├── ProjectsPage.tsx
+│   │   ├── GoalsPage.tsx
+│   │   ├── Navigation.tsx
 │   │   ├── Logos.tsx
-│   │   └── Navigation.tsx
+│   │   ├── Footer.tsx
+│   │   └── FloatingShapes.tsx
 │   ├── styles/
-│   │   └── globals.css
-│   ├── App.tsx          # Main app component with routing
-│   └── main.tsx         # Entry point
-├── build/               # Production build output
-├── index.html           # HTML template
-├── package.json         # Dependencies and scripts
-├── tsconfig.json        # TypeScript configuration
-├── vite.config.ts       # Vite configuration
-└── vercel.json          # Vercel deployment configuration
+│   │   └── globals.css    # Global CSS variables and theme
+│   ├── App.tsx            # Routes
+│   ├── ThemeContext.tsx    # Dark/light theme context
+│   └── main.tsx           # Entry point
+├── index.html             # HTML with SEO meta tags
+├── package.json
+├── vite.config.ts
+├── vercel.json            # Vercel deployment config
+└── tsconfig.json
 ```
 
 ## 🌐 Pages
 
-- **Landing Page** (`/`): Welcome page with overview and navigation cards
-- **About Me** (`/about`): Personal information and background
-- **Interests** (`/interests`): Hobbies, favorites, and passions
-- **Freshman Experience** (`/freshman`): University life at UNO-R
-- **Goals** (`/goals`): Future aspirations and objectives
+| Path | Page |
+|---|---|
+| `/` | Landing — welcome & navigation cards |
+| `/about` | About Me — bio, photo, social links |
+| `/interests` | Things I Love — hobbies & favorites |
+| `/projects` | Projects — work showcase & certificates |
+| `/goals` | Future Goals — career vision |
+
+## 🚀 Getting Started
+
+```bash
+# Install dependencies
+npm install
+
+# Start dev server
+npm run dev
+
+# Build for production
+npm run build
+```
 
 ## 🚢 Deployment
 
-### Vercel Deployment
+Hosted on **Vercel** with automatic deployments from GitHub.
 
-This project is configured for easy deployment to Vercel:
-
-1. Push your code to GitHub
-2. Import the repository to Vercel
-3. Deploy with default settings
-
-The `vercel.json` configuration includes:
-- Build and dev commands
-- Framework preset for Vite
-- SPA routing rewrites
-- Cache headers for assets
-
-### GitHub Deployment
-
-1. Ensure `.gitignore` excludes build artifacts
-2. Commit and push your code:
 ```bash
 git add .
-git commit -m "Your descriptive commit message"
+git commit -m "your message"
 git push origin main
 ```
 
-## ⚙️ Configuration
-
-### Environment Variables
-
-Create a `.env` file in the root directory if you need environment-specific configuration:
-
-```env
-VITE_API_URL=your-api-url
-VITE_APP_NAME=Your App Name
-```
-
-### Build Optimization
-
-The `vite.config.ts` includes:
-- React plugin for JSX support
-- Tailwind CSS plugin
-- Path aliases for cleaner imports
-- Build target optimization
-- Development server configuration
-
-## 🎨 Design System
-
-- **Primary Color**: `#546B41` (Forest Green)
-- **Background**: `#FFF8EC` (Cream)
-- **Accent**: `#DCCCAC` (Light Beige)
-- **Secondary Accent**: `#99AD7A` (Muted Green)
-
-## 🔧 Development
-
-### Running Tests
-
-```bash
-npm test
-```
-
-### Linting
-
-```bash
-npm run lint
-```
-
-### Type Checking
-
-```bash
-npx tsc --noEmit
-```
-
-## 📝 Deployment Checklist
-
-- [ ] Update `vercel.json` with correct build settings
-- [ ] Configure `.gitignore` to exclude build artifacts
-- [ ] Set up environment variables on Vercel
-- [ ] Configure custom domain (optional)
-- [ ] Set up branch protection rules on GitHub
-- [ ] Enable Vercel Preview Deployments
-- [ ] Configure production build settings
-- [ ] Test on multiple browsers and devices
-- [ ] Verify all routes work correctly
-- [ ] Check SEO meta tags
-- [ ] Optimize images and assets
-
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-## 📄 License
-
-This project is private and proprietary.
+Vercel auto-deploys on every push to `main`.
 
 ## 👤 Author
 
 **Ranjit Yadav**
-
-## 🙏 Acknowledgments
-
-- Portfolio design based on Student Portfolio Interface (Community) on Figma
-- Thanks to all the open-source tools and libraries used in this project
-
-## 📞 Support
-
-For support, please contact ranjit.yadav@example.com or open an issue in the repository.
+- Website: [ranjityadav.com.np](https://ranjityadav.com.np)
+- GitHub: [@ranjit-15](https://github.com/ranjit-15)
+- LinkedIn: [ranjit-yadav](https://www.linkedin.com/in/ranjit-yadav-2ab635200)
 
 ---
 
